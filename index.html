@@ -11,30 +11,15 @@
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
-        <!-- <div class="headerspan">
-            <h1 class="header">Portfolio Optimisation  .</h1>
-            <div class='subs'>
-                <small> a product of NGEN Markets </small>
-                <br>
-                <br>
-                <small> from Keeyan Mukherjee </small>
-            </div>
-        </div> -->
         <div class="loader">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
         </div>
         <div id='everything'>
             <div class='inputfield'>
-                <h1 class='header centered blue'>Show us your Portfolio</h1>
-                <div class='helpertext centered'>Add each asset in your portfolio below, using the search system to find the correct funds/stocks.
-                    After this, click the "Optimise Portfolio" button in order to recieve 6 weighted portfolios with these assets which optimise for volatility, return and Sharpe ratio
-                    using both a value system and a ranking system to allocate weights.
+                <h1 class='header centered'>SHOW US YOUR PORTFOLIO</h1>
+                <div class='helpertext centered'>
+                    <b class="centered"><i>This will return a set of 6 optimized portfolios given input funds.</i></b><br>
+                    <b class="centered">For Demonstration</b>: Click <i>Generate Random Portfolio</i>, then on the pop-up click auto-fill fields and run. 
+                    <br><b class="centered">For Use: </b> Search for any funds, add them, then fill in the pop-up fields with whatever you like.
                 </div>
                 <div class='inputrow'>
                     <input data-code = '' data-type= '' id='asset' placeholder="Search For Asset To Add (Type at Least 3 characters)" name='asset'>
@@ -47,42 +32,35 @@
                 </div>
                 <div class='theirportfolio'></div>
                 <div class='opt btn btn-border-3 bigsubmit'>
-                    Optimise Portfolio 
+                    Optimize Portfolio 
                 </div>
             </div>
             <div id='result'>
-                <div class='header2'>Optimised Portfolios</div>
+                <div class='header2'>3 Portfolios on Ranking-based Models; 3 on Value-based Models: both have one for return, volatility, and Sharpe ratio</div>
                 <div id='resulttable'></div>
             </div>
         </div>
         <div id='popupbox'>
-            <div id='boxheader'>
-                This is the final stage of the Optimisation process. This will return 6 models of the portfolio with different weights which weigh regarding
-                volatility, return, and Sharpe ratio. For the value models, there is an amplifier which acts as an exponent to increase the difference in the weights,
-                resulting in better overall statistics, yet less equally weighted portfolios. If needed, these amplifiers can be changed here in order to test different portfolios.
+            <div class='boxheader centered'>
+                For the value models, there is an amplifier which acts as an exponent to increase the difference in the allocation of money to each fund,
+                resulting in better overall statistics, yet less equally weighted portfolios. If needed, these amplifiers can be changed here in order to test different portfolios. <ul>CLICK AUTO-FILL FIELDS FOR QUICK DEMO.</ul>
             </div>
             <div id='inputs'>
-                <input class='is' id='sdate' placeholder='Start Date (DD-MMM-YYYY) ' name='sdate' >
-                <input class='is' id='ramp' placeholder='Return Amplifier' name='ramp' >
-                <input class='is' id='vamp' placeholder='Volatility Amplifier' name='vamp'>
-                <input class='is' id='samp' placeholder='Sharpe Ratio Amplifier' name='samp'>
-                <div class='opt btn btn-border-3 auto'>
-                    Auto-fill Fields 
+                <div class="holdinginputs centered">
+                    <input class='is opt btn btn-border-3' id='sdate' placeholder='Start Date (DD-MMM-YYYY) ' name='sdate' >
+                    <input class='is opt btn btn-border-3' id='ramp' placeholder='Return Amplifier' name='ramp' >
+                    <input class='is opt btn btn-border-3' id='vamp' placeholder='Volatility Amplifier' name='vamp'>
+                    <input class='is opt btn btn-border-3' id='samp' placeholder='Sharpe Ratio Amplifier' name='samp'>
                 </div>
-                <div class='opt btn btn-border-3 bigsubmitfinal'>
-                    Optimise Portfolio 
+                <div class="holdingothers centered">
+                    <div class='opt btn btn-border-3 auto'>
+                        Auto-fill Fields 
+                    </div>
+                    <div class='opt btn btn-border-3 bigsubmitfinal'>
+                        Optimize Portfolio 
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- <form id='form'>
-            <input id='sdate' placeholder='DD-MMM-YYYY' name='sdate' value='31-Mar-2018'>
-            <input id='ramp' placeholder='Return Amplifier' name='ramp' value="1">
-            <input id='vamp' placeholder='Volatility Amplifier' name='vamp' value="1">
-            <input id='samp' placeholder='Sharpe Ratio Amplifier' name='samp' value="1">
-            <input id='constraint' placeholder='Constraint for Minimum Weight' name='constraint' value="1">
-            <button type='Submit'>Show Better Array</button>
-
-        </form>
-        <div id='result'></div> -->
     </body>
 </html>

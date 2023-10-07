@@ -2,10 +2,11 @@ function roundToTwo(num) {
     return +(Math.round(num + "e+2")  + "e-2");
 }
 function getdata(arr, sdate, ramp, vamp, samp, constraint) {
+    console.log({'arr':arr, 'sdate': sdate, 'v-amp': vamp, 's-amp': samp, 'r-amp': ramp, 'constraint': constraint, 'getdata': 1});
     $.ajax({
         type:"GET",
         dataType: "json",
-        data:{'arr':arr, 'sdate': sdate, 'v-amp': vamp, 's-amp': samp, 'r-amp': ramp, 'constraint': constraint, 'getdata': 0},
+        data:{'arr':arr, 'sdate': sdate, 'v-amp': vamp, 's-amp': samp, 'r-amp': ramp, 'constraint': constraint, 'getdata': 1},
         url: "https://trezlorapi.azurewebsites.net/improved",
         success: function(data){
             document.querySelector('.inputfield').style.display = 'none';
@@ -129,18 +130,14 @@ function fillinautocomplete(data) {
             "type": 'Fund'
         })
     }
-    for (i=0; i < data[1].length; i++) {
-        searchoptions.push({
-            "value": data[1][i][1],
-            "label": data[1][i][0],
-            "type": 'Stock'
-        })
-    }
-    console.log(searchoptions);
     $( "#asset" ).autocomplete({
         minLength:3,   
-        delay:500,   
-        source: searchoptions,
+        delay:100,   
+        source: function(request, response) {
+            var results = $.ui.autocomplete.filter(searchoptions, request.term);
+    
+            response(results.slice(0, 10));
+        },
         select: function (event, ui) {        
             var input = document.querySelector('#asset');
             input.value = ui.item.label
@@ -156,6 +153,7 @@ function startpage() {
     document.querySelector('.loader').style.display = 'none'
 }
 document.addEventListener('DOMContentLoaded', function () {
+
     getdata2();
 
 
@@ -227,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelector('.bigsubmit').onclick = function() {
         document.querySelector('#popupbox').style.display = 'block';
-        document.querySelector('#everything').style.opacity = '0.05'
+        document.querySelector('#everything').style.opacity = '0'
     }
 
     document.querySelector('.bigsubmitfinal').onclick = function() {
@@ -238,10 +236,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var samp = document.querySelector('#samp').value;
         var constraint = 2
         document.querySelector('#popupbox').style.display = 'none';
-        document.querySelector('#everything').style.opacity = '0.2';
-        document.querySelector('.loader').style.display = 'block';
+        document.querySelector('#everything').style.opacity = '0';
+        document.querySelector('.loader').style.display = 'grid';
 
-        getdata(JSON.stringify(arr), sdate, ramp, vamp, samp, constraint);
+        getdata(JSON.stringify(arr), sdate, parseInt(ramp), parseInt(vamp), parseInt(samp), parseInt(constraint));
 
         return false;
     }    
@@ -261,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 Mirae Asset Banking and PSU Debt Fund Direct IDCW
             </div>
             <div class="codecontainer">
-                148417
+            147748
             </div>
         </div><div class="assetrow">
             <div class="typecontainer Fund">Fund</div>
@@ -269,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 Aditya Birla Sun Life Banking &amp; PSU Debt Fund  - DIRECT - MONTHLY IDCW
             </div>
             <div class="codecontainer">
-                119552
+            148504
             </div>
         </div><div class="assetrow">
             <div class="typecontainer Fund">Fund</div>
@@ -277,46 +275,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 ICICI Prudential Banking and PSU Debt Fund - Direct Plan -  Quarterly IDCW
             </div>
             <div class="codecontainer">
-                120258
+            150441
             </div>
         </div><div class="assetrow">
-            <div class="typecontainer Stock">Stock</div>
+            <div class="typecontainer Fund">Fund</div>
             <div class="namecontainer">
                 Maruti Suzuki India Limited
             </div>
             <div class="codecontainer">
-                INE585B01010
+            102000
             </div>
         </div><div class="assetrow">
-            <div class="typecontainer Stock">Stock</div>
+            <div class="typecontainer Fund">Fund</div>
             <div class="namecontainer">
                 Jet Airways (India) Limited
             </div>
             <div class="codecontainer">
-                INE802G01018
-            </div>
-        </div><div class="assetrow">
-            <div class="typecontainer Stock">Stock</div>
-            <div class="namecontainer">
-                Reliance Industries Limited
-            </div>
-            <div class="codecontainer">
-                INE002A01018
-            </div>
-        </div><div class="assetrow">
-            <div class="typecontainer Stock">Stock</div>
-            <div class="namecontainer">
-                Bajaj Finserv Limited
-            </div>
-            <div class="codecontainer">
-                INE918I01018
+            101635
             </div>
         </div>`
-        arr = [['F', '148417', 0.1],['F', '119552', 0.1]
-                ,['F', '120258', 0.1]
-                ,['S', 'INE585B01010', 0.1]
-                ,['S', 'INE802G01018', 0.1]
-                ,['S', 'INE002A01018', 0.1]
-                ,['S', 'INE918I01018', 0.1]]
+        arr = [["F","101635",0.2],["F","102000",0.2],["F","150441",0.2],["F","148504",0.2],["F","147748",0.2]];
     }
 })
