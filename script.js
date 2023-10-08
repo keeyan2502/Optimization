@@ -109,7 +109,7 @@ function getdata2() {
     $.ajax({
         type:"GET",
         dataType: "json",
-        url: "https://trezlorapi.azurewebsites.net/codescraper",
+        url: "https://trezlorapi.azurewebsites.net/codescraper1",
         success: function(data){
             startpage();
             fillinautocomplete(data);
@@ -123,10 +123,10 @@ function getdata2() {
 function fillinautocomplete(data) {
     console.log(data);
     var searchoptions = []
-    for (i=0; i < data[0].length; i++) {
+    for (i=0; i < data.length; i++) {
         searchoptions.push({
-            "value": data[0][i][0],
-            "label": data[0][i][1],
+            "value": data[i]['amficode'],
+            "label": data[i]['fund'],
             "type": 'Fund'
         })
     }
