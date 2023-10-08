@@ -280,20 +280,20 @@ document.addEventListener('DOMContentLoaded', function () {
         </div><div class="assetrow">
             <div class="typecontainer Fund">Fund</div>
             <div class="namecontainer">
-                Maruti Suzuki India Limited
+                HDFC FMP 1861D March 2022-Sr.46 (G)
             </div>
             <div class="codecontainer">
-            102000
+            149922
             </div>
         </div><div class="assetrow">
             <div class="typecontainer Fund">Fund</div>
             <div class="namecontainer">
-                Jet Airways (India) Limited
+                ICICI Pru FMP - Sr.88-1226Days Plan F-Reg (IDCW-Q)
             </div>
             <div class="codecontainer">
-            101635
+            150951
             </div>
         </div>`
-        arr = [["F","101635",0.2],["F","102000",0.2],["F","150441",0.2],["F","148504",0.2],["F","147748",0.2]];
+        arr = [["F","101635",0.2],["F","102000",0.2],["F","150441",0.2],["F","149922",0.2],["F","150951",0.2]];
     }
 })
